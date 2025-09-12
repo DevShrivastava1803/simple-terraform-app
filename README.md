@@ -29,17 +29,19 @@ Terraform follows a simple 4-step process:
 2. **Plan** – Preview execution with `terraform plan`. In this step, terraform create a plan which includes what will be created,updated and destroy
 3. **Apply** – Provision resources with `terraform apply`. The plan is executed 
 4. **Destroy** – Remove infra with `terraform destroy`.
+   
+![terraform-architecture-components-workflow-2](https://github.com/user-attachments/assets/52b3c7fe-9ecb-4d10-8171-b55462ff5f5d)
 
 
 ---
 
-## 3. Terraform Core Concepts
+## 3. Terraform Key Terms
 
-* **Provider** – Cloud platform or service (AWS, GCP, Azure, etc.).
-* **Resource** – Infrastructure object (EC2, S3, VPC, etc.).
-* **Variable** – Inputs that make code reusable.
-* **Output** – Values exposed after execution.
-* **State** – Snapshot of current infra stored in `terraform.tfstate`.
+* **Provider** – It is the Cloud platform or service (AWS, GCP, Azure, etc.).
+* **Resource** – It is Infrastructure object (EC2, S3, VPC, etc.).
+* **Variable** – Input values that we want to use in the Terraform code.
+* **Output** – These are the Values exposed after execution.
+* **State** – It is the current condition of infrastructure stored in `terraform.tfstate`.
 
 ---
 
@@ -56,7 +58,8 @@ simple-terraform-app/
 │    |--EC2/
 |        |-- main.tf
 |        |-- variables.tf
-|    |-- S3/
+|    |-- S3/..
+|    |-- RDS/..
 │── README.md
 ```
 <img width="275" height="494" alt="image" src="https://github.com/user-attachments/assets/c7f7baf6-94b9-4aa7-860e-b05c105303ed" />
@@ -70,7 +73,6 @@ terraform init       # Initialize project, download providers
 terraform plan       # Show execution plan
 terraform apply      # Apply changes
 terraform destroy    # Delete infrastructure
-terraform fmt        # Format code
 terraform validate   # Validate config
 terraform workspace  # Manage environments
 ```
