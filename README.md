@@ -143,16 +143,23 @@ data "aws_ami" "ubuntu" {
 ---
 
 ## 8. Modules
+These are the Reusable packages, that covert the complex configurations of resources into reuseable blocks, to improve understandiblity and readablity 
 
-
-* **Root module** – The directory where you run Terraform commands.
+* **Main module** – The directory where you run Terraform commands.
 * **Child modules** – Reusable chunks of Terraform code.
+**Main.tf**
+<img width="307" height="234" alt="image" src="https://github.com/user-attachments/assets/605e38d8-d855-4663-98c1-e3acb305ca09" />
 
-✅ *\[Insert screenshot of your `modules/` folder here]*
+**Module structure**
+
+<img width="261" height="115" alt="image" src="https://github.com/user-attachments/assets/a438b261-5594-4c2f-8e33-93e25b864e58" />
 
 ---
 
 ## 9. Workspaces (Multi-Environment)
+These are the multiple instances of the same configuration, each of these instances contain it's own state files,
+It is useful as it allows us to keep the dev,staging and prod all seprately. 
+
 
 ```bash
 terraform workspace new dev
