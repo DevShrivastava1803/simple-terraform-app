@@ -5,7 +5,7 @@ resource "aws_instance" "simpleinstance" {
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.main.id]
     tags = {
-      Name = "EC2 Instance"
+      Name = "EC2 Instance making changes just to see if it works"
     }
 }
 
@@ -21,13 +21,11 @@ resource "aws_security_group" "main" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-  description = "Allow SSH"
-  from_port   = 22
-  to_port     = 22
-  protocol    = "tcp"
-  cidr_blocks = ["0.0.0.0/0"] 
-}
-
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] 
+  }
   egress {
     from_port   = 0
     protocol    = "-1"

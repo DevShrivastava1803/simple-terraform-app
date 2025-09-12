@@ -1,13 +1,13 @@
 #create s3 
 resource "aws_s3_bucket" "mybucket" {
-    bucket = "s3backendbucketdev124535"  
-    versioning {
-      enabled = true
-    }
-    server_side_encryption_configuration {
-      rule {
-        apply_server_side_encryption_by_default {
-          sse_algorithm = "AES256"
+  bucket = "s3backendbucketdev124535"
+  versioning {
+    enabled = true
+  }
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
       }
     }
   }
@@ -16,12 +16,12 @@ resource "aws_s3_bucket" "mybucket" {
 
 # create dynamodb table
 resource "aws_dynamodb_table" "state_lock" {
-  name ="state-lock"
+  name         = "state-lock"
   billing_mode = "PAY_PER_REQUEST"
-  hash_key = "LockID"
+  hash_key     = "LockID"
 
   attribute {
-    name ="LockID"
+    name = "LockID"
     type = "S"
   }
 }
