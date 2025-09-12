@@ -80,15 +80,17 @@ terraform workspace  # Manage environments
 ---
 
 ## 6. State Management
+The `terraform.tfstate` stores the current state of the infrastructure,Tracks resources, metadata, and helps terraform compare the realworld infra to the one defined in the config file.
+It also builds a dependency graph from the config file to determine the correct order of the operations.
 
 * Terraform tracks infra in **state files** (`terraform.tfstate`).
 * State maps resources in code to real cloud resources.
-* Best practice: store state **remotely** (S3 + DynamoDB lock).
+* Terraform remote backend : store states **remotely** using S3 + DynamoDB lock which prevents conflicts.
 
 Example:
+**backend.tf**
 
 ```hcl
-terraform {
   backend "s3" {
     bucket         = "my-terraform-state"
     key            = "env/dev/terraform.tfstate"
@@ -96,35 +98,52 @@ terraform {
     dynamodb_table = "terraform-locks"
     encrypt        = true
   }
-}
+
 ```
 
 ---
 
-## 7. Variables & Outputs
+## 7. Sample Code
 
-**variables.tf**
+**Main.tf** 
+
+```hcl
+
+resource "aws_instance" "simpleinstance" {
+    ami = data.aws_ami.ubuntu.id
+
+    instance_type = var.instance_type
+      tags = {
+         Name = "EC2 Instance"
+       }
+}
+
+```
+
+**Variables.tf**
 
 ```hcl
 variable "instance_type" {
-  description = "EC2 instance type"
+  description = "Type of EC2 instance"
   type        = string
   default     = "t2.micro"
 }
-```
 
-**outputs.tf**
-
-```hcl
-output "instance_ip" {
-  description = "Public IP of the EC2 instance"
-  value       = aws_instance.my_ec2.public_ip
+data "aws_ami" "ubuntu" {
+  most_recent = true
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-22.04-amd64-server-*"]
+  }
+  owners = ["099720109477"]  
 }
+
 ```
 
 ---
 
 ## 8. Modules
+
 
 * **Root module** – The directory where you run Terraform commands.
 * **Child modules** – Reusable chunks of Terraform code.
