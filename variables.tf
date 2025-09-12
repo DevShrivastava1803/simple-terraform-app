@@ -17,6 +17,10 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
+# variable "ami_id" {
+#     description = "value of the AMI ID"
+#     default = data.aws_ami.ubuntu.id
+# }
 
 variable "region" {
   default = "us-east-1"

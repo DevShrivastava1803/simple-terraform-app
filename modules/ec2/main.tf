@@ -1,13 +1,6 @@
-terraform {
-  required_version = ">=0.12"
-}
-
-provider "aws" {
-  region = var.region
-}
 
 resource "aws_instance" "simpleinstance" {
-    ami = var.ami_id
+    ami = data.aws_ami.ubuntu.id
 
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.main.id]

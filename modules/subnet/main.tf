@@ -18,3 +18,7 @@ resource "aws_subnet" "main" {
     Name = "Main"
   }
 }
+
+resource "aws_vpc" "mainvpc" {
+  
+}
