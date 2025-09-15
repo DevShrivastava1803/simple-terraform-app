@@ -1,6 +1,6 @@
 # Terraform: End-to-End Guide
 
-Terraform is an open-source Infrastructure as Code (IaC) tool developed by HashiCorp. It allows you to define, provision, and manage infrastructure across multiple cloud providers (AWS, Azure, GCP) and on-prem systems using a simple declarative language (HCL).
+Terraform is a source available ( BUSL ) Infrastructure as Code (IaC) tool developed by HashiCorp. It allows you to define, provision, and manage infrastructure across multiple cloud providers (AWS, Azure, GCP) using a simple declarative language (HCL).
 
 By maintaining infrastructure in code, Terraform ensures **versioning, collaboration, repeatability, and scalability**.
 
@@ -16,8 +16,6 @@ By maintaining infrastructure in code, Terraform ensures **versioning, collabora
 terraform -v
 ```
 <img width="1481" height="192" alt="image" src="https://github.com/user-attachments/assets/bd99ecd3-5dda-44ce-ace2-1480727cf9e9" />
-
-4. (Optional) Install VS Code + Terraform extension.
 
 ---
 
@@ -92,10 +90,10 @@ Example:
 
 ```hcl
   backend "s3" {
-    bucket         = "my-terraform-state"
-    key            = "env/dev/terraform.tfstate"
+    bucket         = "my-terraform-state-name"
+    key            = "folder/env/dev/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "terraform-locks"
+    dynamodb_table = "terraform-locks1"
     encrypt        = true
   }
 
