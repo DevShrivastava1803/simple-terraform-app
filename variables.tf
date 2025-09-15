@@ -11,19 +11,10 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
-  owners = ["099720109477"] # Canonical
+  owners = ["099720109477"]  # Canonical
 }
 
-variable "instance_type" {
-  description = "Type of EC2 instance"
-  type        = string
-  default     = "t2.micro"
-}
-
-# variable "ami_id" {
-#     description = "value of the AMI ID"
-#     default = data.aws_ami.ubuntu.id
-# }
+ 
 
 variable "region" {
   default = "us-east-1"
