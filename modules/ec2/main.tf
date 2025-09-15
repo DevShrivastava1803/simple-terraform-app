@@ -5,7 +5,7 @@ resource "aws_instance" "simpleinstance" {
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.main.id]
     tags = {
-      Name = "EC2 Instance making changes just to see if it works"
+      Name = "EC2 Instance it works now"
     }
 }
 
